@@ -291,5 +291,19 @@ class GitFixture(unittest.TestCase):
         self.assertNotIn(title, str(caught.exception))
 
 
+    def test_private_legacy_tags_are_retained_but_not_implicitly_published(self):
+        p = self.root / 'Recovery' / 'tag-archive.txt'; p.parent.mkdir()
+        p.write_text('Synthetic private tag archive')
+        self.run_git(self.root, 'add', 'Recovery/tag-archive.txt')
+        tree = self.repo.text('write-tree')
+        oid = self.repo.call(['git', 'commit-tree', tree, '-p', 'HEAD'], input=b'Synthetic archive tag\n').stdout.decode().strip()
+        self.run_git(self.root, 'tag', '-a', 'private-archive-tag', oid, '-m', 'Synthetic private tag')
+        self.run_git(self.root, 'reset', '--mixed', 'HEAD')
+        self.repo.audit()
+        with self.assertRaisesRegex(sync.SyncError, 'Recovery/tag-archive.txt'):
+            self.repo.audit(extra_refs=['refs/tags/private-archive-tag'])
+        self.assertIn('private-archive-tag', self.repo.text('tag', '--list'))
+
+
 if __name__ == '__main__':
     unittest.main()

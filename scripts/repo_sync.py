@@ -225,7 +225,12 @@ class Repository:
                 # The pre-push hook adds every actual outgoing object below.
                 current = self.call(['git', 'symbolic-ref', '--quiet', 'HEAD'], check=False).stdout.decode().strip()
                 refs = [current or 'HEAD']
-                refs.extend(self.text('for-each-ref', '--format=%(refname)', 'refs/tags').splitlines())
+                for tag in self.text('for-each-ref', '--format=%(refname)', 'refs/tags').splitlines():
+                    target = self.call(['git', 'rev-parse', tag + '^{commit}'], check=False)
+                    if target.returncode == 0 and self.call(
+                            ['git', 'merge-base', '--is-ancestor', target.stdout.decode().strip(), 'HEAD'],
+                            check=False).returncode == 0:
+                        refs.append(tag)
             else:
                 refs = self.text('for-each-ref', '--format=%(refname)', 'refs/heads', 'refs/tags').splitlines()
             refs.extend(extra_refs)
