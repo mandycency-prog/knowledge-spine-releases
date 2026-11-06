@@ -1,0 +1,211 @@
+{
+  "speakers": [
+    {
+      "id": "fixture-speaker-1",
+      "role": "讲师",
+      "displayName": "讲师"
+    }
+  ],
+  "spans": [
+    {
+      "id": "fixture-span-01",
+      "sequence": 1,
+      "startTime": 0,
+      "endTime": 4,
+      "speakerID": "fixture-speaker-1",
+      "originalText": "欢迎大家来到今天的课程，我们先听一小段音乐。",
+      "correctedText": null,
+      "isImportant": false,
+      "isBackgroundAudio": true
+    },
+    {
+      "id": "fixture-span-02",
+      "sequence": 2,
+      "startTime": 4,
+      "endTime": 8,
+      "speakerID": "fixture-speaker-1",
+      "originalText": "啦啦啦啦啦，跟着节拍向前走。",
+      "correctedText": null,
+      "isImportant": false,
+      "isBackgroundAudio": true
+    },
+    {
+      "id": "fixture-span-03",
+      "sequence": 3,
+      "startTime": 8,
+      "endTime": 15,
+      "speakerID": "fixture-speaker-1",
+      "originalText": "听过一遍不等于真正学会，熟悉感很容易被误认成掌握。",
+      "correctedText": null,
+      "isImportant": false,
+      "isBackgroundAudio": false
+    },
+    {
+      "id": "fixture-span-04",
+      "sequence": 4,
+      "startTime": 15,
+      "endTime": 22,
+      "speakerID": "fixture-speaker-1",
+      "originalText": "检验掌握的第一个方法，是合上资料后独立讲出核心逻辑。",
+      "correctedText": null,
+      "isImportant": false,
+      "isBackgroundAudio": false
+    },
+    {
+      "id": "fixture-span-05",
+      "sequence": 5,
+      "startTime": 22,
+      "endTime": 29,
+      "speakerID": "fixture-speaker-1",
+      "originalText": "如果离开提示就讲不出来，说明现在只是看懂，还没有形成可提取的记忆。",
+      "correctedText": null,
+      "isImportant": false,
+      "isBackgroundAudio": false
+    },
+    {
+      "id": "fixture-span-06",
+      "sequence": 6,
+      "startTime": 29,
+      "endTime": 36,
+      "speakerID": "fixture-speaker-1",
+      "originalText": "所以复习不能只是重新阅读，要先尝试从记忆中取出答案。",
+      "correctedText": null,
+      "isImportant": false,
+      "isBackgroundAudio": false
+    },
+    {
+      "id": "fixture-span-07",
+      "sequence": 7,
+      "startTime": 36,
+      "endTime": 43,
+      "speakerID": "fixture-speaker-1",
+      "originalText": "检索练习的关键是先回答，再对照资料找出遗漏和错误。",
+      "correctedText": null,
+      "isImportant": false,
+      "isBackgroundAudio": false
+    },
+    {
+      "id": "fixture-span-08",
+      "sequence": 8,
+      "startTime": 43,
+      "endTime": 50,
+      "speakerID": "fixture-speaker-1",
+      "originalText": "答错并不是失败，它暴露了下一轮练习应该集中在哪里。",
+      "correctedText": null,
+      "isImportant": false,
+      "isBackgroundAudio": false
+    },
+    {
+      "id": "fixture-span-09",
+      "sequence": 9,
+      "startTime": 50,
+      "endTime": 57,
+      "speakerID": "fixture-speaker-1",
+      "originalText": "第二个标准是迁移，不只会做见过的题，还要能处理表面不同的新问题。",
+      "correctedText": null,
+      "isImportant": false,
+      "isBackgroundAudio": false
+    },
+    {
+      "id": "fixture-span-10",
+      "sequence": 10,
+      "startTime": 57,
+      "endTime": 64,
+      "speakerID": "fixture-speaker-1",
+      "originalText": "迁移需要先识别新问题与旧知识共享的底层关系。",
+      "correctedText": null,
+      "isImportant": false,
+      "isBackgroundAudio": false
+    },
+    {
+      "id": "fixture-span-11",
+      "sequence": 11,
+      "startTime": 64,
+      "endTime": 71,
+      "speakerID": "fixture-speaker-1",
+      "originalText": "只记题型模板会在题目换了外衣后失效，理解因果链才能迁移。",
+      "correctedText": null,
+      "isImportant": false,
+      "isBackgroundAudio": false
+    },
+    {
+      "id": "fixture-span-12",
+      "sequence": 12,
+      "startTime": 71,
+      "endTime": 78,
+      "speakerID": "fixture-speaker-1",
+      "originalText": "可以用一道陌生题检验自己，并要求自己说出为什么选这个答案。",
+      "correctedText": null,
+      "isImportant": false,
+      "isBackgroundAudio": false
+    },
+    {
+      "id": "fixture-span-13",
+      "sequence": 13,
+      "startTime": 78,
+      "endTime": 85,
+      "speakerID": "fixture-speaker-1",
+      "originalText": "第三个问题是遗忘，集中学习一次不能保证几周后还能取出来。",
+      "correctedText": null,
+      "isImportant": false,
+      "isBackgroundAudio": false
+    },
+    {
+      "id": "fixture-span-14",
+      "sequence": 14,
+      "startTime": 85,
+      "endTime": 92,
+      "speakerID": "fixture-speaker-1",
+      "originalText": "间隔复习要放在即将遗忘但仍能努力回想的时候。",
+      "correctedText": null,
+      "isImportant": false,
+      "isBackgroundAudio": false
+    },
+    {
+      "id": "fixture-span-15",
+      "sequence": 15,
+      "startTime": 92,
+      "endTime": 99,
+      "speakerID": "fixture-speaker-1",
+      "originalText": "复习间隔不需要追求完美，可以根据每次回答的难度动态调整。",
+      "correctedText": null,
+      "isImportant": false,
+      "isBackgroundAudio": false
+    },
+    {
+      "id": "fixture-span-16",
+      "sequence": 16,
+      "startTime": 99,
+      "endTime": 106,
+      "speakerID": "fixture-speaker-1",
+      "originalText": "回答越轻松，下次间隔可以越长；回答越困难，就越早再测。",
+      "correctedText": null,
+      "isImportant": false,
+      "isBackgroundAudio": false
+    },
+    {
+      "id": "fixture-span-17",
+      "sequence": 17,
+      "startTime": 106,
+      "endTime": 113,
+      "speakerID": "fixture-speaker-1",
+      "originalText": "完整的学习闭环是：独立提取、对照纠错、陌生迁移、间隔复测。",
+      "correctedText": null,
+      "isImportant": false,
+      "isBackgroundAudio": false
+    },
+    {
+      "id": "fixture-span-18",
+      "sequence": 18,
+      "startTime": 113,
+      "endTime": 120,
+      "speakerID": "fixture-speaker-1",
+      "originalText": "如果你能持续用这个闭环表达和解决新问题，才能说知识真正成为了你的能力。",
+      "correctedText": null,
+      "isImportant": false,
+      "isBackgroundAudio": false
+    }
+  ],
+  "candidates": [],
+  "warnings": ["这是用于跨主题结构验证的合成课程逐字稿，不是用户数据。"]
+}

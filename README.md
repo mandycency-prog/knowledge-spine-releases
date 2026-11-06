@@ -15,7 +15,7 @@
 
 [版本与全部附件](https://github.com/mandycency-prog/knowledge-spine-releases/releases/tag/v0.4.0-preview.1) · [安装与首次使用](docs/INSTALL.zh-CN.md) · [资料与隐私说明](docs/PRIVACY.zh-CN.md) · [已做测试及未验证范围](docs/TESTING.zh-CN.md)
 
-GitHub 自动生成的 “Source code (zip/tar.gz)” 是本仓库说明文件，不是软件；请下载上面的 `.dmg`。
+GitHub 自动生成的 “Source code (zip/tar.gz)” 不是安装包；试用软件请下载上面的 `.dmg`。旧预览 tag 的压缩包保留当时的说明文件，完整当前源码请查看 `main` 分支或[下载当前源码 ZIP](https://github.com/mandycency-prog/knowledge-spine-releases/archive/refs/heads/main.zip)。
 
 | 条件 | 说明 |
 |---|---|
@@ -53,4 +53,17 @@ SHA-256：`68c7004d56bcbb0e5048803ed1c2297558fb26aa3f06602d22fac7254f772ce8`
 
 欢迎在本仓库 Issues 中反馈系统版本、芯片型号、软件版本和可复现步骤。**Issues 对所有人公开，请勿上传 API 密钥、个人课程原稿、录音、真实导图或含私人信息的日志、截图。** 优先用不含个人内容的简短示例复现。
 
-本仓库保存公开下载和通用说明。安装包内包含运行所需代码及第三方组件；依赖许可证、FFmpeg 对应源码归档位于应用内的 ThirdPartyNotices 目录，其他 Python 组件许可证保留在其安装目录中。详见[资料与隐私说明](docs/PRIVACY.zh-CN.md)。
+本仓库同时保存当前应用源码、合成测试、构建工具、使用说明和安装包下载。安装包内包含运行所需代码及第三方组件；依赖许可证、FFmpeg 对应源码归档位于应用内的 ThirdPartyNotices 目录，其他 Python 组件许可证保留在其安装目录中。详见[资料与隐私说明](docs/PRIVACY.zh-CN.md)。
+
+## 源码与本地开发
+
+- `Sources/`：macOS 原生应用与核心数据逻辑。
+- `Backend/`：语音转写、图文分析及有来源的文本处理。
+- `Tests/`：合成测试与独立检查工具，不包含用户真实课程。
+- `AppBundle/`、`scripts/`：应用元数据、构建与隐私审查工具。
+
+构建需要 macOS 14+ 和支持 Swift 6 的工具链：运行 `zsh scripts/package_app.sh`。构建不等于安装，也不会自动获得第三方模型或 API 密钥。可移动分发包的独立依赖准备见 [测试版分发](docs/测试版分发.md)。
+
+检查可运行 `python3 scripts/repo_sync.py check`。新克隆由维护者启用 `python3 scripts/repo_sync.py install`，安装前请阅读 [协作规则](AGENTS.md) 与 [同步和隐私边界](docs/GitHub同步与恢复.md)。
+
+公开范围是当前已审查源码、合成测试和通用说明。开发者的私人记录、原始开发历史、录音、导图、数据库和密钥不包含在本仓库；运行软件后产生的使用者资料保存在其本机。

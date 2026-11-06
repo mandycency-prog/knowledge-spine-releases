@@ -1,0 +1,43 @@
+{
+  "fixtureID": "reusable-course-r1",
+  "session": {
+    "id": "A7190000-0000-4000-8000-000000000001",
+    "title": "独立短课 R1",
+    "speakers": [
+      {"id": "A7190000-0000-4000-8000-000000000011", "role": "主播", "displayName": "讲述者"},
+      {"id": "A7190000-0000-4000-8000-000000000012", "role": "嘉宾", "displayName": "提问者"}
+    ],
+    "transcript": [
+      {"id":"A7191000-0000-4000-8000-000000000001","sequence":1,"startTime":0,"endTime":10,"speakerID":"A7190000-0000-4000-8000-000000000011","originalText":"我把窗户关一下，楼下今天有点吵。好，我们接着说社团刊物送印前，稿子临时改了怎么交接。","isImportant":false,"isBackgroundAudio":false},
+      {"id":"A7191000-0000-4000-8000-000000000002","sequence":2,"startTime":10,"endTime":24,"speakerID":"A7190000-0000-4000-8000-000000000011","originalText":"上次不是没有人改稿，而是编辑在聊天里说改了，排版还拿着旧附件，校对又以为另一份才是最后一版。每个人都做了事，最后交出去的却不是同一份。","isImportant":false,"isBackgroundAudio":false},
+      {"id":"A7191000-0000-4000-8000-000000000003","sequence":3,"startTime":24,"endTime":37,"speakerID":"A7190000-0000-4000-8000-000000000011","originalText":"所以先别把问题归成谁不够仔细。现在大家判断当前版本的依据不一样，改动也没有明确交到下一位手里。只提醒大家认真一点，碰到下一次临时改稿还会乱。","isImportant":true,"isBackgroundAudio":false},
+      {"id":"A7191000-0000-4000-8000-000000000004","sequence":4,"startTime":37,"endTime":50,"speakerID":"A7190000-0000-4000-8000-000000000011","originalText":"我的建议是先约定一个交稿位置，里面只放当前准备送印的那份。谁把新稿放进去，谁同时写清改的是哪一处，以及下一位需要核对什么。","isImportant":true,"isBackgroundAudio":false},
+      {"id":"A7191000-0000-4000-8000-000000000005","sequence":5,"startTime":50,"endTime":64,"speakerID":"A7190000-0000-4000-8000-000000000011","originalText":"这不是让大家再写一份完整工作日记。比如改了活动日期，就写改前改后的日期、涉及哪个版面，以及这次由谁接着校对，不必把整篇文章再贴一次。","isImportant":true,"isBackgroundAudio":false},
+      {"id":"A7191000-0000-4000-8000-000000000006","sequence":6,"startTime":64,"endTime":75,"speakerID":"A7190000-0000-4000-8000-000000000011","originalText":"如果这项改动后来撤销，也要留下已撤销的说明，不要直接把那条通知删掉。否则下一个人会分不清，是自己没看见，还是这件事已经不需要做。","isImportant":false,"isBackgroundAudio":false},
+      {"id":"A7191000-0000-4000-8000-000000000007","sequence":7,"startTime":75,"endTime":85,"speakerID":"A7190000-0000-4000-8000-000000000012","originalText":"那我们是不是只要换成在线协作文档，就能保证再也不会拿错版本了？","isImportant":false,"isBackgroundAudio":false},
+      {"id":"A7191000-0000-4000-8000-000000000008","sequence":8,"startTime":85,"endTime":99,"speakerID":"A7190000-0000-4000-8000-000000000011","originalText":"不能这样保证。用哪个工具不是我今天要定的事情。即使共用一个文档，如果没人说明谁接手、接手后核对哪里，交接仍可能没完成。","isImportant":false,"isBackgroundAudio":false},
+      {"id":"A7191000-0000-4000-8000-000000000009","sequence":9,"startTime":99,"endTime":111,"speakerID":"A7190000-0000-4000-8000-000000000011","originalText":"再说收到以后怎么确认。不要只在群里回一个收到，最好指着这次改动说清：我现在核对的是哪份稿，以及这处修改会影响什么。","isImportant":false,"isBackgroundAudio":false},
+      {"id":"A7191000-0000-4000-8000-000000000010","sequence":10,"startTime":111,"endTime":124,"speakerID":"A7190000-0000-4000-8000-000000000011","originalText":"举个例子，正文里的展览日期改了，海报图里的日期也可能要核对。编辑告诉排版改完了，不等于图片上的日期已经一起改过，不能靠这句通知替代核对。","isImportant":false,"isBackgroundAudio":false},
+      {"id":"A7191000-0000-4000-8000-000000000011","sequence":11,"startTime":124,"endTime":136,"speakerID":"A7190000-0000-4000-8000-000000000011","originalText":"我们先检查改动本身和它牵连的地方，不是每改一个字就把全刊从头到尾重新审一遍。范围要跟这次改动走，否则大家很快就不愿意做了。","isImportant":true,"isBackgroundAudio":false},
+      {"id":"A7191000-0000-4000-8000-000000000012","sequence":12,"startTime":136,"endTime":149,"speakerID":"A7190000-0000-4000-8000-000000000012","originalText":"如果已经临近送印，原来负责核对的人又联系不上，还必须一直等他回复吗？","isImportant":true,"isBackgroundAudio":false},
+      {"id":"A7191000-0000-4000-8000-000000000013","sequence":13,"startTime":149,"endTime":164,"speakerID":"A7190000-0000-4000-8000-000000000011","originalText":"不是一直等。要事先约定这种情况下由谁接替核对。临时换人也得明确写出来，不能因为快到时间了，就默认随便一个人已经检查过。要不要延期送印，仍由当期负责人决定。","isImportant":true,"isBackgroundAudio":false},
+      {"id":"A7191000-0000-4000-8000-000000000014","sequence":14,"startTime":164,"endTime":177,"speakerID":"A7190000-0000-4000-8000-000000000011","originalText":"我听另一个社团说，他们试过类似做法，来回问谁拿着新稿的次数少了。但那是他们的经验，我们自己还没试，不能直接说我们也已经省下多少时间。","isImportant":false,"isBackgroundAudio":false},
+      {"id":"A7191000-0000-4000-8000-000000000015","sequence":15,"startTime":177,"endTime":187,"speakerID":"A7190000-0000-4000-8000-000000000011","originalText":"下一期我想先挑一个版面试一遍，别一开始就要求全社团每件事情都按这套办法做。先看看大家能不能真的接得住。","isImportant":false,"isBackgroundAudio":false},
+      {"id":"A7191000-0000-4000-8000-000000000016","sequence":16,"startTime":187,"endTime":199,"speakerID":"A7190000-0000-4000-8000-000000000011","originalText":"试的时候记两类事情：还有没有拿错稿、漏核对的情况，以及为了交接多花了多少时间。不能只看错漏少了，就不管大家是不是被表格拖住了。","isImportant":false,"isBackgroundAudio":false},
+      {"id":"A7191000-0000-4000-8000-000000000017","sequence":17,"startTime":199,"endTime":211,"speakerID":"A7190000-0000-4000-8000-000000000011","originalText":"如果试下来只增加填写负担，却没改善交接，就把多余项目删掉再看，而不是因为做了张表，就认定管理已经变好了。","isImportant":false,"isBackgroundAudio":false},
+      {"id":"A7191000-0000-4000-8000-000000000018","sequence":18,"startTime":211,"endTime":224,"speakerID":"A7190000-0000-4000-8000-000000000012","originalText":"我理解了，你不是要求大家绝不出错，而是先让当前稿是哪份、谁继续核对这件事不含糊，再小范围看看有没有用。","isImportant":true,"isBackgroundAudio":false},
+      {"id":"A7191000-0000-4000-8000-000000000019","sequence":19,"startTime":224,"endTime":238,"speakerID":"A7190000-0000-4000-8000-000000000011","originalText":"对。我们追求的是交接有明确依据，不是承诺换个工具就零错误。试行后再决定保留哪些步骤，今天没有宣布全社团已经开始执行。","isImportant":true,"isBackgroundAudio":false},
+      {"id":"A7191000-0000-4000-8000-000000000020","sequence":20,"startTime":238,"endTime":246,"speakerID":"A7190000-0000-4000-8000-000000000011","originalText":"今天先到这里。散会之后记得把这间教室的灯关掉，钥匙还是放在原来的地方。","isImportant":false,"isBackgroundAudio":false}
+    ],
+    "thoughts": [
+      {"id":"A7192000-0000-4000-8000-000000000001","text":"我想到了我们的报名表：  也有好几份。\n先别急着换工具。","anchorTime":52,"isDeleted":false},
+      {"id":"A7192000-0000-4000-8000-000000000002","text":"我不同意临近截止就默认有人检查过，要把接替的人写清。","anchorTime":162,"isDeleted":false},
+      {"id":"A7192000-0000-4000-8000-000000000003","text":"我的猜想：自动发提醒也许有帮助。这里只是我的想法，不是讲述者已经验证的结论。","anchorTime":230,"isDeleted":false}
+    ],
+    "importantMarks": [
+      {"id":"A7193000-0000-4000-8000-000000000001","anchorSpanID":"A7191000-0000-4000-8000-000000000004","protectedSpanIDs":["A7191000-0000-4000-8000-000000000003","A7191000-0000-4000-8000-000000000004","A7191000-0000-4000-8000-000000000005"],"anchorTime":46},
+      {"id":"A7193000-0000-4000-8000-000000000002","anchorSpanID":"A7191000-0000-4000-8000-000000000012","protectedSpanIDs":["A7191000-0000-4000-8000-000000000011","A7191000-0000-4000-8000-000000000012","A7191000-0000-4000-8000-000000000013"],"anchorTime":142},
+      {"id":"A7193000-0000-4000-8000-000000000003","anchorSpanID":"A7191000-0000-4000-8000-000000000019","protectedSpanIDs":["A7191000-0000-4000-8000-000000000018","A7191000-0000-4000-8000-000000000019"],"anchorTime":229}
+    ]
+  }
+}

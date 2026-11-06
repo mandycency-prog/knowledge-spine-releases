@@ -1,0 +1,332 @@
+{
+  "schema_version": 1,
+  "purpose": "独立验收忠实概括与证据定位。预期答案只供验收器和审核者使用，不得拼入生产提示或模型输入。",
+  "scope": "全部为合成普通场景，不涉及实际课程；不评价医疗、法律等现实建议是否正确，只评价是否忠于给定原话。",
+  "evaluation_rules": [
+    "分别判定概括真伪与所引证据是否充分；引用编号合法、摘录逐字匹配不等于语义支持。",
+    "supported 表示给定原话足以支持完整概括；contradicted 必须存在明确冲突；未提及或证据不足判 insufficient_evidence。",
+    "不得把高效推断为轻松，把有所改善推断为完全消除，把个人选择推断为唯一可行方案。",
+    "证据可有多个正确组合；expected 中列出的是充分组合示例，不以列表逐字相等代替含义审核。",
+    "逐字摘录必须能定位回实际来源；相同摘录在多处出现时，必须保留身份和上下文，不能只返回文本后随便匹配第一处。",
+    "原文既有支持又有限制时，必须合看限制，不得只挑有利句子。不得把引用他人的观点当成讲述者采纳。",
+    "split=holdout 的预期答案不得用于调整生产提示、实现特定词表或生成该案例的模型结果；模型只接收 input。"
+  ],
+  "cases": [
+    {
+      "id": "negation_supported",
+      "split": "development",
+      "category": "否定与非冲突",
+      "input": {
+        "spans": [
+          {"id": "a", "text": "这套批量归档方法把处理时间减半了。"},
+          {"id": "b", "text": "操作依旧单调，但单调不影响它节省时间。"}
+        ],
+        "claim": "批量归档提高了效率。",
+        "proposed_evidence": [{"source_id": "a", "quote": "把处理时间减半了"}]
+      },
+      "expected": {
+        "semantic_verdict": "supported",
+        "proposed_evidence_verdict": "supports",
+        "sufficient_evidence_alternatives": [[{"source_id": "a", "quote": "把处理时间减半了"}]],
+        "reason": "时间减半直接支持效率提高；操作单调不反驳效率，概括没有声称有趣或轻松。"
+      }
+    },
+    {
+      "id": "negation_contradicted",
+      "split": "holdout",
+      "category": "否定与非冲突",
+      "input": {
+        "spans": [
+          {"id": "a", "text": "自动分类让我少花了一半时间。"},
+          {"id": "b", "text": "不过整理过程并没有因此变得有趣，仍然很单调。"}
+        ],
+        "claim": "自动分类消除了整理过程的单调感。",
+        "proposed_evidence": [{"source_id": "a", "quote": "少花了一半时间"}]
+      },
+      "expected": {
+        "semantic_verdict": "contradicted",
+        "proposed_evidence_verdict": "irrelevant",
+        "contradiction_evidence": [{"source_id": "b", "quote": "并没有因此变得有趣，仍然很单调"}],
+        "reason": "节省时间不等于消除感受；后句明确保留单调感。"
+      }
+    },
+    {
+      "id": "degree_supported",
+      "split": "holdout",
+      "category": "程度与量词",
+      "input": {
+        "spans": [
+          {"id": "a", "text": "模板减少了部分重复录入。"},
+          {"id": "b", "text": "复杂订单仍然需要逐项手工核对。"}
+        ],
+        "claim": "模板减轻了重复录入负担，但没有取消全部人工核对。",
+        "proposed_evidence": [
+          {"source_id": "a", "quote": "减少了部分重复录入"},
+          {"source_id": "b", "quote": "仍然需要逐项手工核对"}
+        ]
+      },
+      "expected": {
+        "semantic_verdict": "supported",
+        "proposed_evidence_verdict": "supports",
+        "sufficient_evidence_alternatives": [[
+          {"source_id": "a", "quote": "减少了部分重复录入"},
+          {"source_id": "b", "quote": "仍然需要逐项手工核对"}
+        ]],
+        "reason": "概括保持了部分改善与仍需人工的程度边界。"
+      }
+    },
+    {
+      "id": "degree_contradicted",
+      "split": "development",
+      "category": "程度与量词",
+      "input": {
+        "spans": [
+          {"id": "a", "text": "新表格降低了一些出错概率。"},
+          {"id": "b", "text": "它不能保证零错误，提交前仍要检查。"}
+        ],
+        "claim": "新表格保证提交内容不再出错。",
+        "proposed_evidence": [{"source_id": "a", "quote": "降低了一些出错概率"}]
+      },
+      "expected": {
+        "semantic_verdict": "contradicted",
+        "proposed_evidence_verdict": "incomplete",
+        "contradiction_evidence": [{"source_id": "b", "quote": "不能保证零错误"}],
+        "reason": "降低概率不能升级成必然无错，且原话明确否认保证。"
+      }
+    },
+    {
+      "id": "condition_supported",
+      "split": "development",
+      "category": "条件范围",
+      "input": {
+        "spans": [
+          {"id": "a", "text": "如果资料格式统一，可以自动导入。"},
+          {"id": "b", "text": "格式不统一时，先整理格式再导入。"}
+        ],
+        "claim": "格式统一的资料可以直接自动导入。",
+        "proposed_evidence": [{"source_id": "a", "quote": "如果资料格式统一，可以自动导入"}]
+      },
+      "expected": {
+        "semantic_verdict": "supported",
+        "proposed_evidence_verdict": "supports",
+        "sufficient_evidence_alternatives": [
+          [{"source_id": "a", "quote": "如果资料格式统一，可以自动导入"}],
+          [
+            {"source_id": "a", "quote": "如果资料格式统一，可以自动导入"},
+            {"source_id": "b", "quote": "格式不统一时，先整理格式再导入"}
+          ]
+        ],
+        "reason": "概括保留格式统一的条件，没有把有条件可用扩为无条件可用。"
+      }
+    },
+    {
+      "id": "condition_contradicted",
+      "split": "holdout",
+      "category": "条件范围",
+      "input": {
+        "spans": [
+          {"id": "a", "text": "离线模式只支持已经下载的资料。"},
+          {"id": "b", "text": "没有下载的资料，离线时无法打开。"}
+        ],
+        "claim": "离线模式能打开任何资料，不需要提前下载。",
+        "proposed_evidence": [{"source_id": "a", "quote": "离线模式只支持已经下载的资料"}]
+      },
+      "expected": {
+        "semantic_verdict": "contradicted",
+        "proposed_evidence_verdict": "contradicts",
+        "contradiction_evidence": [{"source_id": "b", "quote": "没有下载的资料，离线时无法打开"}],
+        "reason": "概括删掉必要条件并反转下载要求。"
+      }
+    },
+    {
+      "id": "subject_supported",
+      "split": "holdout",
+      "category": "主体与转述",
+      "input": {
+        "spans": [
+          {"id": "a", "text": "书里的设计师每天手绘草图，这给了我启发。"},
+          {"id": "b", "text": "我自己还没有开始每天画，只是打算下周试试。"}
+        ],
+        "claim": "讲述者受书中设计师启发，计划尝试每日手绘。",
+        "proposed_evidence": [
+          {"source_id": "a", "quote": "这给了我启发"},
+          {"source_id": "b", "quote": "只是打算下周试试"}
+        ]
+      },
+      "expected": {
+        "semantic_verdict": "supported",
+        "proposed_evidence_verdict": "supports",
+        "sufficient_evidence_alternatives": [[
+          {"source_id": "a", "quote": "书里的设计师每天手绘草图，这给了我启发"},
+          {"source_id": "b", "quote": "我自己还没有开始每天画，只是打算下周试试"}
+        ]],
+        "reason": "正确区分他人的既有习惯与讲述者自己的未来计划。"
+      }
+    },
+    {
+      "id": "subject_contradicted",
+      "split": "development",
+      "category": "主体与转述",
+      "input": {
+        "spans": [
+          {"id": "a", "text": "同事说：‘所有会议都应该取消。’"},
+          {"id": "b", "text": "我不赞成他的看法，我只想取消没有议题的会议。"}
+        ],
+        "claim": "讲述者主张取消所有会议。",
+        "proposed_evidence": [{"source_id": "a", "quote": "所有会议都应该取消"}]
+      },
+      "expected": {
+        "semantic_verdict": "contradicted",
+        "proposed_evidence_verdict": "irrelevant",
+        "contradiction_evidence": [{"source_id": "b", "quote": "我不赞成他的看法，我只想取消没有议题的会议"}],
+        "reason": "摘录真实但属于被反对的同事观点，不能归给讲述者。"
+      }
+    },
+    {
+      "id": "citation_wrong_location",
+      "split": "development",
+      "category": "引用错位",
+      "input": {
+        "spans": [
+          {"id": "a", "text": "第一周买纸花了四十元。"},
+          {"id": "b", "text": "固定每天写一页，让我更容易坚持写作。"}
+        ],
+        "claim": "固定每日小目标有助于坚持写作。",
+        "proposed_evidence": [{"source_id": "a", "quote": "第一周买纸花了四十元"}]
+      },
+      "expected": {
+        "semantic_verdict": "supported",
+        "proposed_evidence_verdict": "irrelevant",
+        "sufficient_evidence_alternatives": [[{"source_id": "b", "quote": "固定每天写一页，让我更容易坚持写作"}]],
+        "reason": "概括本身正确，但花费记录不支持坚持机制；来源存在和文字精确均不足以通过。"
+      }
+    },
+    {
+      "id": "citation_correct_location",
+      "split": "holdout",
+      "category": "引用错位",
+      "input": {
+        "spans": [
+          {"id": "a", "text": "这次活动有二十个人参加。"},
+          {"id": "b", "text": "提前发出议题，让大家准备得更充分。"}
+        ],
+        "claim": "提前公布议题改善了参会准备。",
+        "proposed_evidence": [{"source_id": "b", "quote": "提前发出议题，让大家准备得更充分"}]
+      },
+      "expected": {
+        "semantic_verdict": "supported",
+        "proposed_evidence_verdict": "supports",
+        "sufficient_evidence_alternatives": [[{"source_id": "b", "quote": "提前发出议题，让大家准备得更充分"}]],
+        "reason": "引用直接表达概括的因果，而非仅同场活动中的人数。"
+      }
+    },
+    {
+      "id": "repeated_quote_ambiguous",
+      "split": "development",
+      "category": "重复摘录定位",
+      "input": {
+        "spans": [
+          {"id": "a", "text": "旧版说明写着‘可以直接提交’，但这条说明已经作废。"},
+          {"id": "b", "text": "新版规定，经过检查的稿件可以直接提交。"}
+        ],
+        "claim": "经过检查的稿件现在可以直接提交。",
+        "proposed_evidence": [{"source_id": null, "quote": "可以直接提交"}]
+      },
+      "expected": {
+        "semantic_verdict": "supported",
+        "proposed_evidence_verdict": "ambiguous_location",
+        "sufficient_evidence_alternatives": [[{"source_id": "b", "quote": "经过检查的稿件可以直接提交"}]],
+        "reason": "相同短语出现两次，第一处属于已作废规则。不可默认匹配第一处；必须定位到有效新版并保留检查条件。"
+      }
+    },
+    {
+      "id": "repeated_quote_resolved",
+      "split": "holdout",
+      "category": "重复摘录定位",
+      "input": {
+        "spans": [
+          {"id": "a", "text": "去年的试验说‘速度提高了’，但换设备后无法复现。"},
+          {"id": "b", "text": "今年重新测试，在相同设备上速度提高了，并且三次复测结果一致。"}
+        ],
+        "claim": "今年同设备测试中的速度提升得到重复验证。",
+        "proposed_evidence": [{"source_id": "b", "quote": "在相同设备上速度提高了，并且三次复测结果一致"}]
+      },
+      "expected": {
+        "semantic_verdict": "supported",
+        "proposed_evidence_verdict": "supports",
+        "sufficient_evidence_alternatives": [[{"source_id": "b", "quote": "今年重新测试，在相同设备上速度提高了，并且三次复测结果一致"}]],
+        "reason": "保留年份、相同设备条件与复测结果，区分旧试验的同文描述。"
+      }
+    },
+    {
+      "id": "missing_evidence_is_not_contradiction",
+      "split": "holdout",
+      "category": "未知与矛盾",
+      "input": {
+        "spans": [{"id": "a", "text": "这个文件可以导出成 PDF。"}],
+        "claim": "这个文件还可以导出成 Word。",
+        "proposed_evidence": [{"source_id": "a", "quote": "可以导出成 PDF"}]
+      },
+      "expected": {
+        "semantic_verdict": "insufficient_evidence",
+        "proposed_evidence_verdict": "irrelevant",
+        "contradiction_evidence": [],
+        "reason": "只介绍 PDF 不等于明确否认 Word。不能凭常识补支持，也不能把缺失信息判成矛盾。"
+      }
+    },
+    {
+      "id": "explicit_exclusion_is_contradiction",
+      "split": "development",
+      "category": "未知与矛盾",
+      "input": {
+        "spans": [{"id": "a", "text": "这一版只支持 PDF 导出，不支持 Word。"}],
+        "claim": "这一版支持 Word 导出。",
+        "proposed_evidence": [{"source_id": "a", "quote": "不支持 Word"}]
+      },
+      "expected": {
+        "semantic_verdict": "contradicted",
+        "proposed_evidence_verdict": "contradicts",
+        "contradiction_evidence": [{"source_id": "a", "quote": "不支持 Word"}],
+        "reason": "原话存在明确否定，不是单纯未提及。"
+      }
+    },
+    {
+      "id": "compound_claim_partial_evidence",
+      "split": "holdout",
+      "category": "复合观点完整支持",
+      "input": {
+        "spans": [
+          {"id": "a", "text": "改成预约后，等候时间缩短了。"},
+          {"id": "b", "text": "费用没有增加，仍按原价收取。"}
+        ],
+        "claim": "预约缩短了等待，而且没有增加费用。",
+        "proposed_evidence": [{"source_id": "a", "quote": "等候时间缩短了"}]
+      },
+      "expected": {
+        "semantic_verdict": "supported",
+        "proposed_evidence_verdict": "incomplete",
+        "sufficient_evidence_alternatives": [[
+          {"source_id": "a", "quote": "改成预约后，等候时间缩短了"},
+          {"source_id": "b", "quote": "费用没有增加"}
+        ]],
+        "reason": "概括两部分都正确，但第一句无法单独证明费用不变；需要合并证据而非只验第一半。"
+      }
+    },
+    {
+      "id": "compound_claim_missing_fact",
+      "split": "development",
+      "category": "复合观点完整支持",
+      "input": {
+        "spans": [{"id": "a", "text": "新的排班缩短了顾客等候时间。"}],
+        "claim": "新的排班缩短了等候时间，并降低了人员成本。",
+        "proposed_evidence": [{"source_id": "a", "quote": "缩短了顾客等候时间"}]
+      },
+      "expected": {
+        "semantic_verdict": "insufficient_evidence",
+        "proposed_evidence_verdict": "incomplete",
+        "contradiction_evidence": [],
+        "reason": "只支持等待改善，没有人员成本信息；整条不能通过，也不能凭缺证断言成本必然增加。"
+      }
+    }
+  ]
+}

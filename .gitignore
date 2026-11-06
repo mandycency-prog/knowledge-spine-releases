@@ -1,4 +1,73 @@
+.build/
+dist/
 .DS_Store
-*.dmg
-*.bundle
+**/.DS_Store
+**/__pycache__/
+*.py[cod]
+
+# Local models, recordings, processing outputs, and credentials never belong
+# in source control.
+*.pt
+*.gguf
+*.m4a
+*.wav
+*.mp3
 *.log
+.env
+.env.*
+.openai_key
+
+# Recovery snapshots can contain the user's formal transcript/database.
+Recovery/*.json
+Recovery/*.app/
+
+
+# Local editor/agent state.
+.codex/
+.agents/
+
+# Local archives and recordings are preserved on disk, never uploaded.
+旧资料归档/
+*.aac
+*.flac
+*.mp4
+*.sqlite
+*.sqlite3
+*.sqlite-wal
+*.sqlite-shm
+*.db
+*.pem
+*.key
+*.p12
+*.pfx
+**/database.json
+**/config.json
+**/credentials.json
+# Local incident notes with session IDs; keep the existing file on this Mac.
+Recovery/
+
+# Private planning material stays on this Mac.
+/build_product_requirements.py
+/*.docx
+
+# Personal exchanges, image sources, exports and installer archives stay local.
+*.kspine
+*.pdf
+*.zip
+*.tar
+*.gz
+*.xz
+*.bundle
+*.dmg
+*.aiff
+*.aif
+*.caf
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.heic
+*.tif
+*.tiff
+*.gif
+*.bmp

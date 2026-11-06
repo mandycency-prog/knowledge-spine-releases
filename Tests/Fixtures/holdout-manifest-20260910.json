@@ -1,0 +1,10 @@
+{
+  "session_id": "00000000-0000-4000-8000-000000000001",
+  "audio_paths": [
+    "/synthetic/audio/holdout-course.wav"
+  ],
+  "language": "zh",
+  "whisper_model_path": "/synthetic/models/base.pt",
+  "structure_model_path": "/synthetic/models/structure.gguf",
+  "ffmpeg_path": "/synthetic/tools/ffmpeg"
+}

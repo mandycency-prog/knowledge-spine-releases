@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+<key>CFBundleDevelopmentRegion</key><string>zh_CN</string>
+<key>CFBundleDisplayName</key><string>知识骨架验收</string>
+<key>CFBundleExecutable</key><string>KnowledgeSpineApp</string>
+<key>CFBundleIdentifier</key><string>com.local.knowledgespine.acceptance</string>
+<key>CFBundleName</key><string>知识骨架验收</string>
+<key>CFBundlePackageType</key><string>APPL</string>
+<key>CFBundleVersion</key><string>1</string>
+<key>LSMinimumSystemVersion</key><string>14.0</string>
+<key>NSHighResolutionCapable</key><true/>
+<key>NSScreenCaptureUsageDescription</key><string>只用于隔离验收你选择的测试音频来源。</string>
+</dict></plist>

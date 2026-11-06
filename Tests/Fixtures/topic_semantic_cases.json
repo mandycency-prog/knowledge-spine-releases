@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "purpose": "独立诊断中性主题的忠实性和中心相关性；全部为合成材料，不是实际课程答案或现实领域建议。",
+  "input_contract": "模型只接收 cases[*].input。records 是唯一可引用原文；stages 是全部阶段概括，仅供判断中心是否覆盖主要内容，不能充当原话或独立事实证据。expected_by_id 只供所有调用结束后独立评分，不进入提示、修正、示例或采样选择。",
+  "cases": [
+    {
+      "id": "topic_01",
+      "input": {
+        "topic": "楼道照明方案的比较与取舍",
+        "records": [
+          {"id": "topic_01-r0", "sequence": 0, "text": "今天讨论楼道照明。有人建议装感应灯，人走近才亮，认为这样能少开一会儿灯；也有人希望整夜保持低亮度，免得老人走到拐角才触发。"},
+          {"id": "topic_01-r1", "sequence": 1, "text": "我们把用电量、拐角能否及时照亮和居民夜间经过的感受都列为比较项目。目前还没有实际测量，两边提出的效果都要验证。"},
+          {"id": "topic_01-r2", "sequence": 2, "text": "暂时不决定采用哪一种，先选两段楼道试用，再根据记录讨论。今天只是把各自的考虑和比较办法讲清楚。"}
+        ],
+        "stages": [
+          {"summary": "两种照明提议分别关注亮灯时长和及时照亮", "sourceSpanIDs": ["topic_01-r0"]},
+          {"summary": "比较用电量、照明及时性和经过体验", "sourceSpanIDs": ["topic_01-r1"]},
+          {"summary": "先试用记录，再决定采用哪种方案", "sourceSpanIDs": ["topic_01-r2"]}
+        ]
+      }
+    },
+    {
+      "id": "topic_02",
+      "input": {
+        "topic": "合唱团能否用独自练习替代现场排练",
+        "records": [
+          {"id": "topic_02-r0", "sequence": 0, "text": "合唱团有人提议取消现场排练，让大家各自在家跟着录音练，理由是不用再约同一时间到场。今天我们就讨论这个提议。"},
+          {"id": "topic_02-r1", "sequence": 1, "text": "我不同意把现场排练全部取消。独自练习可以先熟悉自己的声部，但彼此音量怎么配合、什么时候一起换气，还是要到场听着对方调整。"},
+          {"id": "topic_02-r2", "sequence": 2, "text": "所以我建议保留现场排练，把跟录音练习安排在之前。两种练习各有用途，不是让在家练完全取代大家合练。"}
+        ],
+        "stages": [
+          {"summary": "有人提出用在家练习替代现场排练", "sourceSpanIDs": ["topic_02-r0"]},
+          {"summary": "讲述者反对完全替代，认为现场配合仍有必要", "sourceSpanIDs": ["topic_02-r1"]},
+          {"summary": "建议在家预习与现场合练相结合", "sourceSpanIDs": ["topic_02-r2"]}
+        ]
+      }
+    },
+    {
+      "id": "topic_03",
+      "input": {
+        "topic": "自然通风如何彻底消除温室霉病",
+        "records": [
+          {"id": "topic_03-r0", "sequence": 0, "text": "这次介绍温室的日常通风记录。打开侧窗后，湿度有时会下降，但下降多少也跟室外天气有关。"},
+          {"id": "topic_03-r1", "sequence": 1, "text": "不能把通风说成能彻底消除霉病。我们记录里，通风以后仍有植株出现霉斑；目前也没有证据说明单靠开窗就能把这个问题解决。"},
+          {"id": "topic_03-r2", "sequence": 2, "text": "因此记录时要把开窗时间、湿度和霉斑情况分别记下来，不要只见湿度降低，就写成霉病已经消失。"}
+        ],
+        "stages": [
+          {"summary": "开窗后的湿度变化受室外天气影响", "sourceSpanIDs": ["topic_03-r0"]},
+          {"summary": "通风不等于彻底消除霉病", "sourceSpanIDs": ["topic_03-r1"]},
+          {"summary": "分别记录通风、湿度和实际霉斑情况", "sourceSpanIDs": ["topic_03-r2"]}
+        ]
+      }
+    },
+    {
+      "id": "topic_04",
+      "input": {
+        "topic": "夜间观星的准备与体验",
+        "records": [
+          {"id": "topic_04-r0", "sequence": 0, "text": "开课前说个小插曲：我昨晚去看星星，带了外套和折叠凳，等了一阵才看到。好了，闲话到这儿，今天的陶艺课专门讲陶坯干燥。"},
+          {"id": "topic_04-r1", "sequence": 1, "text": "先看陶坯的厚薄。厚薄差别大的地方干得不一样快，所以制作时要尽量检查壁厚，接合处也不能只看表面。"},
+          {"id": "topic_04-r2", "sequence": 2, "text": "接下来讲摆放。不要把刚做好的陶坯直接放在强风口，必要时盖上薄膜，让它慢慢干，并观察边缘和底部的变化。"},
+          {"id": "topic_04-r3", "sequence": 3, "text": "最后安排这一周的观察：每天同一时间拍照，记下哪里先变色、哪里出现裂纹，下次课拿记录来比较。今天的重点就是厚薄、摆放和干燥过程记录。"}
+        ],
+        "stages": [
+          {"summary": "检查陶坯壁厚及接合处", "sourceSpanIDs": ["topic_04-r1"]},
+          {"summary": "通过摆放和覆盖控制陶坯干燥过程", "sourceSpanIDs": ["topic_04-r2"]},
+          {"summary": "连续记录变色与裂纹供下次比较", "sourceSpanIDs": ["topic_04-r3"]}
+        ]
+      }
+    }
+  ],
+  "expected_by_id": {
+    "topic_01": {
+      "acceptable": true,
+      "failure_type": null,
+      "reason": "主题只标明比较与取舍，完整覆盖提出方案、比较依据和暂不决策的推进，没有断言哪种更好或已经验证。未下结论不妨碍它成为真实讨论主题。",
+      "evidence_source_ids": ["topic_01-r0", "topic_01-r1", "topic_01-r2"]
+    },
+    "topic_02": {
+      "acceptable": true,
+      "failure_type": null,
+      "reason": "原文主动讨论能否替代，并以反对完全替代和建议结合收束。主题的问题形式没有声称已经替代或讲述者赞成；否定答案不反驳这个问题确实被讨论。",
+      "evidence_source_ids": ["topic_02-r0", "topic_02-r1", "topic_02-r2"]
+    },
+    "topic_03": {
+      "acceptable": false,
+      "failure_type": "false_presupposition",
+      "reason": "主题的如何彻底消除预设该效果可以实现，但原文明确否定且给出通风后仍有霉斑。文字出现在原文的否定句里，不等于该带预设主题成立；不能只验提到过通风与霉病。",
+      "counterevidence_source_ids": ["topic_03-r1", "topic_03-r2"]
+    },
+    "topic_04": {
+      "acceptable": false,
+      "failure_type": "off_main_topic",
+      "reason": "观星准备和体验确有一句原话依据，不能说完全未提及；但讲述者明确将它标为开课闲话，全部主要阶段和总结都围绕陶坯干燥。局部真实不等于可作为整课中心。",
+      "incidental_source_ids": ["topic_04-r0"],
+      "main_topic_source_ids": ["topic_04-r1", "topic_04-r2", "topic_04-r3"]
+    }
+  }
+}
